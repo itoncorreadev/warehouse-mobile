@@ -1,0 +1,47 @@
+<ActionBar title="Login" class="action-bar"></ActionBar>
+
+<ScrollView>
+  <StackLayout class="page">
+
+    <StackLayout class="form" [formGroup]="form">
+      <!-- <Image src="~/images/app_icon.png"></Image> -->
+
+      <!-- email -->
+      <StackLayout class="input-field">
+        <Label text="Email" class="label font-weight-bold m-b-5"></Label>
+        <TextField class="input" keyboardType="email" autocapitalizationType="none" autocorrect="false" formControlName="email"></TextField>
+        <StackLayout class="hr-light"></StackLayout>
+
+        <StackLayout *ngIf="form.get('email').invalid && form.get('email').dirty">
+          <Label *ngIf="form.get('email').errors.required" class="text-right text-danger" text="campo obrigatório"></Label>
+          <Label *ngIf="form.get('email').errors.email" class="text-right text-danger" text="email inválido"></Label>
+        </StackLayout>
+      </StackLayout>
+
+      <!-- password -->
+      <StackLayout class="input-field">
+        <Label text="Senha" class="label font-weight-bold m-b-5"></Label>
+        <TextField class="input" secure="true" formControlName="password"></TextField>
+        <StackLayout class="hr-light"></StackLayout>
+
+        <StackLayout *ngIf="form.get('password').invalid && form.get('password').dirty">
+          <Label *ngIf="form.get('password').errors.required" class="text-right text-danger" text="campo obrigatório"></Label>
+        </StackLayout>
+      </StackLayout>
+
+      <!-- formErrors -->
+      <StackLayout *ngIf="formErrors" class="formErrors">
+        <Label class="font-weight-bold" text="Ocorreu um erro ao logar"></Label>
+        <Label *ngFor="let error of formErrors" [text]="error" class="text-danger" textWrap="true"></Label>
+      </StackLayout>
+
+      <!-- ActivityIndicator -->
+      <ActivityIndicator [busy]="submitted" *ngIf="submitted" horizontalAlignment="center"></ActivityIndicator>
+
+      <!-- buttons -->
+      <Button text="Entrar" class="btn btn-primary" [isEnabled]="form.valid && !submitted" (tap)="signInUser()"></Button>
+      <Button text="Criar Conta" nsRouterLink="/sign-up" pageTransition="slideTop" class="btn btn-outline"></Button>
+    </StackLayout>
+
+  </StackLayout>
+</ScrollView>
