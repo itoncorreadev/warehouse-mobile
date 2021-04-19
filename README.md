@@ -1,6 +1,6 @@
-<p align="center">
+<div>
   <img src="https://github.com/cleitoncorreas/cleitoncorreas/blob/4fa53ca31d1bf2a525be593615104f1bbea71da9/Projetos/Warehouse/Capa/capa-warehouse.png"/>
-</p>
+</div>
 
 # 🏛️ Warehouse (Mobile)
 Projeto agenda com backend Ruby on Rails API e frontend em Angular e Monile em NativeScript
